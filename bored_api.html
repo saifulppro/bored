@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bored Api Test</title>
+    <style type="text/css">
+        body {
+            background-image: url(img/bored.jpg);
+            background-size: cover;
+            background-position: center top;
+            background-repeat: no-repeat;
+        }
+       .site_logo a h2 {
+            text-align: center;
+            font-size: 50px;
+            text-decoration: none;
+            margin: 0;
+            padding: 25px 0;
+            text-transform: uppercase;
+            color: blueviolet;
+        }
+        a{
+            text-decoration: none;
+        }
+        h1.w_c {
+            font-size: 30px;
+            text-transform: uppercase;
+            text-align: center;
+            background-color: rgba(198, 182, 182, 0.3);
+            padding: 40px 0;
+            margin: 0;
+        }
+        h2#Data {
+            font-size: 65px;
+            font-weight: 700;
+            text-align: center;
+            padding: 90px 0;
+            background-color: rgba(17, 17, 17, 0.5);
+            margin: 0;
+            text-decoration: .5px underline;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <!-- header section -->
+    <section class="header_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="site_logo"><a href="#"><h2>Bored ☹ ☹</h2></a></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- header section -->
+    <!-- bored -->
+    <h1 class="w_c">You are bored? Please follow the instructions.</h1>
+    <h2 id="Data">Take a Class</h2>
+
+    <script>
+       function Loaded() {
+        fetch('http://www.boredapi.com/api/activity/')
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById("Data").innerText = data.activity;
+            console.log(data.link);
+            
+        })
+       }
+       Loaded();
+       setInterval(() => {
+           Loaded();
+       }, 100000);
+    </script>
+</body>
+</html>
